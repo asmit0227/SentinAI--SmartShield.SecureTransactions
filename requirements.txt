@@ -1,12 +1,9 @@
 seaborn
 pandas
-
-
 joblib
 scikit-learn
 xgboost
 shap
-
 
 fastapi
 uvicorn
@@ -16,8 +13,12 @@ python-dotenv
 
 confluent-kafka
 redis
-pytest
 
+streamlit
+requests
+
+pytest
+httpx
 
 
 
