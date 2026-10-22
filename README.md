@@ -436,7 +436,7 @@ screenshots/
 
 ### Recent Transaction
 
-![Recent Transaction](screenshots/dashboard-recent- transaction.png)
+![Recent Transaction](screenshots/dashboard-recent-transaction.png)
 
 ### Transaction Analytics
 
