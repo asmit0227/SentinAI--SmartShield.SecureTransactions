@@ -6,7 +6,7 @@ from src.database import SessionLocal
 from src.db_models import TransactionRecord
 from src.redis_features import record_transaction_velocity
 from src.decision_engine import get_transaction_decision
-from src.settings import KAFKA_BOOTSTRAP_SERVERS
+from src.settings import get_kafka_config
 from src.logger import get_logger
 
 logger=get_logger(__name__)
@@ -26,12 +26,17 @@ DLQ_TOPIC = "fraud-dead-letter"
 # 2. MAIN CONSUMER
 
 
-consumer = Consumer({
-    "bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS,
+consumer_config = get_kafka_config()
+
+consumer_config.update({
     "group.id": "fraud-detection-services",
     "auto.offset.reset": "earliest",
     "enable.auto.commit": False
 })
+
+consumer = Consumer(
+    consumer_config
+)
 
 
 
@@ -39,7 +44,7 @@ consumer = Consumer({
 
 
 dlq_producer = Producer({
-    "bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS
+    get_kafka_config()
 })
 
 

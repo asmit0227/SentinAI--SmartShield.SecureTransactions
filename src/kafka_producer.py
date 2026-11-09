@@ -2,7 +2,7 @@ import json
 
 from confluent_kafka import Producer
 
-from src.settings import KAFKA_BOOTSTRAP_SERVERS
+from src.settings import get_kafka_config
 from src.logger import get_logger
 
 
@@ -12,7 +12,9 @@ TOPIC = "fraud-transactions"
 
 
 producer = Producer({
-    "bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS
+    
+    get_kafka_config()
+
 })
 
 

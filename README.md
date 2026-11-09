@@ -438,6 +438,10 @@ screenshots/
 
 ![Recent Transaction](screenshots/dashboard-recent-transaction.png)
 
+### Reviewed Transaction
+
+![Reviewed Transaction](screenshots/reviewed.png)
+
 ### Transaction Analytics
 
 ![Transaction Analytics](screenshots/transaction-analytics.png)

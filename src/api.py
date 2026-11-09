@@ -4,21 +4,22 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from src.predictor import predict_transaction
 from src.db_models import TransactionRecord
-from src.database import get_db
+from src.database import get_db,engine,Base
 from src.kafka_producer import send_transaction  
 from datetime import datetime,timezone
 from sqlalchemy import text
 from src.database import engine
 from confluent_kafka.admin import AdminClient
 from src.redis import redis_client
-from src.settings import KAFKA_BOOTSTRAP_SERVERS
+from src.settings import get_kafka_config
 from src.logger import get_logger
+
 
 logger = get_logger(__name__)
 
 
 kafka_admin=AdminClient({
-      "bootstrap.servers":KAFKA_BOOTSTRAP_SERVERS
+       get_kafka_config()
 })
 
 
@@ -26,6 +27,7 @@ app=FastAPI(
     title="Real Time Fraud Detection API",
     version="1.0.0"
 )
+Base.metadata.create_all(bind=engine)
 class Transaction(BaseModel):
     Time: float
     V1: float

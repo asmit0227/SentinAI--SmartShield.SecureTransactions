@@ -24,25 +24,35 @@ DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT", "5432")
 DB_NAME = os.getenv("DB_NAME")
 
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 
-if not all([DB_USER, DB_PASSWORD, DB_HOST, DB_NAME]):
-    raise RuntimeError(
-        "Database environment variables are missing."
+if DATABASE_URL:
+
+    engine = create_engine(DATABASE_URL)
+
+else:
+
+    if not all([
+        DB_USER,
+        DB_PASSWORD,
+        DB_HOST,
+        DB_NAME
+    ]):
+        raise RuntimeError(
+            "Database environment variables are missing."
+        )
+
+    local_database_url = URL.create(
+        drivername="postgresql+psycopg2",
+        username=DB_USER,
+        password=DB_PASSWORD,
+        host=DB_HOST,
+        port=int(DB_PORT),
+        database=DB_NAME
     )
 
-
-
-DATABASE_URL = URL.create(
-    drivername="postgresql+psycopg2",
-    username=DB_USER,
-    password=DB_PASSWORD,
-    host=DB_HOST,
-    port=int(DB_PORT),
-    database=DB_NAME
-)
-
-engine = create_engine(DATABASE_URL)
+    engine = create_engine(local_database_url)
 
 
 
