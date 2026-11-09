@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import streamlit as st
+import os
 from UI.style import header_dashboard,kpi_cards,Fonts_styling,background,require_review_styling
 
 API_URL = st.secrets.get(
