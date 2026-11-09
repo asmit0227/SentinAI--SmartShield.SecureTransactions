@@ -3,7 +3,10 @@ import pandas as pd
 import streamlit as st
 from UI.style import header_dashboard,kpi_cards,Fonts_styling,background,require_review_styling
 
-app_base_url="http://127.0.0.1:8000"
+API_URL = st.secrets.get(
+    "API_URL",
+    os.getenv("API_URL", "http://127.0.0.1:8000")
+)
 
 st.set_page_config(
     page_title="SentinAI - Smart Shield.Secure Transactions ",
