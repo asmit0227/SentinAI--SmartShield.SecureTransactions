@@ -43,9 +43,9 @@ consumer = Consumer(
 # 3. DLQ PRODUCER
 
 
-dlq_producer = Producer({
+dlq_producer = Producer(
     get_kafka_config()
-})
+)
 
 
 
@@ -104,6 +104,7 @@ try:
 
         db = None
         transaction = None
+        ext_transaction_id = None
 
         raw_payload = message.value().decode(
             "utf-8",
