@@ -19,7 +19,7 @@ st.set_page_config(
 def get_api(endpoint):
    try: 
     response=requests.get(
-        f"{app_base_url}{endpoint}",
+        f"{API_URL}{endpoint}",
         
         timeout=5
     )
