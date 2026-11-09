@@ -7,15 +7,10 @@ from sqlalchemy.engine import URL
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 ENV_PATH = BASE_DIR / ".env"
 
-
 load_dotenv(dotenv_path=ENV_PATH, override=True)
-
 
 
 DB_USER = os.getenv("DB_USER")
@@ -60,7 +55,6 @@ else:
     )
 
     engine = create_engine(local_database_url)
-
 
 
 SessionLocal = sessionmaker(
