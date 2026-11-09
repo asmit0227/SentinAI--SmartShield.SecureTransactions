@@ -519,4 +519,15 @@ Built as an end-to-end Machine Learning and Backend Engineering portfolio projec
 
 ---
 
+## Live Demo
+
+🔗 Streamlit Dashboard:
+https://sentinai--smartshieldsecuretransactions-pjavlypwuxkirsbxdgbixq.streamlit.app
+
+🔗 FastAPI Swagger Docs:
+https://sentinai-smartshieldsecuretransactions-production.up.railway.app/docs
+
+🔗 API Health Check:
+https://sentinai-smartshieldsecuretransactions-production.up.railway.app/health
+
 ⭐ If you found this project interesting
