@@ -11,11 +11,11 @@ logger = get_logger(__name__)
 TOPIC = "fraud-transactions"
 
 
-producer = Producer({
+producer = Producer(
     
     get_kafka_config()
 
-})
+)
 
 
 def send_transaction(transaction: dict):
